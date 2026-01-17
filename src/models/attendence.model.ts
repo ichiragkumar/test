@@ -1,78 +1,30 @@
+import mongoose, { Schema, Model } from "mongoose";
+import { ATTENDENCE_STATUS } from "../config/enum.js";
 
-
-
-Validation Error (400)
-
-
-{
-  "success": false,
-  "error": "Invalid request schema",
+export interface IAttendance {
+  _id?: mongoose.Types.ObjectId;
+  classId: mongoose.Types.ObjectId;
+  studentId: mongoose.Types.ObjectId;
+  status: ATTENDENCE_STATUS;
 }
 
+const attendanceSchema = new Schema<IAttendance>(
+  {
+    classId: {
+      type: Schema.Types.ObjectId,
+      required: true
+    },
+    studentId: {
+      type: Schema.Types.ObjectId,
+      required: true
+    },
+    status: {
+      type: String,
+      enum: Object.values(ATTENDENCE_STATUS),
+      required: true
+    }
+  },
+  { timestamps: true }
+);
 
-
-Unauthorized (401)
-
-{
-  "success": false,
-  "error": "Unauthorized, token missing or invalid"
-}
-
-
-
-Forbidden - Role Check (403)
-{
-  "success": false,
-  "error": "Forbidden, teacher access required"
-}
-
-
-
-Forbidden - Ownership Check (403)
-{
-  "success": false,
-  "error": "Forbidden, not class teacher"
-}
-
-
-Not Found (404)
-{
-  "success": false,
-  "error": "Class not found"
-}
-
-or 
-
-{
-  "success": false,
-  "error": "User not found"
-}
-
-or
-
-{
-  "success": false,
-  "error": "Student not found"
-}
-
-
-
-
-In-Memory Attendance State
-
-const activeSession = {
-  classId: "c101", // current active class
-  startedAt: "2025-03-11T10:00:00.000Z", // ISO string
-  attendance: {
-    "s100": "present",
-    "s101": "absent"
-    // studentId: status
-  }
-};
-
-
-**mportant:**
-
-- `startedAt` must be ISO string: `new Date().toISOString()`
-- `attendance` object stores status for each student
-- Only ONE session active at a time
+export const Attendance = mongoose.model("attendence", attendanceSchema)

@@ -11,7 +11,7 @@ interface IUser {
 }
 
 
-const UserSchema  = new Schema<IUser>({
+const userSchema  = new Schema<IUser>({
     name : {
         required: true,
         type:String
@@ -36,4 +36,4 @@ const UserSchema  = new Schema<IUser>({
 })
 
 
-export const User = mongoose.model("user", UserSchema)
+export const User = mongoose.model("user", userSchema)
