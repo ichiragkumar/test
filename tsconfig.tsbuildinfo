@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/config/responsehandler.ts","./src/config/index.ts","./src/models/attendence.model.ts","./src/models/class.model.ts","./src/models/user.model.ts","./src/routes/auth/logout.ts","./src/routes/auth/me.ts","./src/routes/auth/signin.ts","./src/routes/auth/signup.ts"],"errors":true,"version":"5.9.2"}

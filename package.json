@@ -4,6 +4,8 @@
   "description": "Tests for the Live Attendance System - run against any compliant server",
   "main": "index.js",
   "scripts": {
+    "build":"tsc -b",
+    "dev":"npm run build && npm run dev",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui"
@@ -13,7 +15,24 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.6",
+    "@types/mongoose": "^5.11.96",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.4",
     "vitest": "^4.0.15",
     "ws": "^8.18.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahul-MyGit/mid-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rahul-MyGit/mid-test/issues"
+  },
+  "homepage": "https://github.com/rahul-MyGit/mid-test#readme"
 }
